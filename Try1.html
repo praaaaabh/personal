@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Animation with Options</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000; /* Black background color */
+  }
+  
+  .heart {
+    --sizeMultiplier: 6; /* Set the size multiplier */
+    width: calc(100px * var(--sizeMultiplier)); /* Calculated size */
+    height: calc(90px * var(--sizeMultiplier)); /* Calculated size */
+    position: relative;
+    animation: pulse 2s infinite;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease-in-out; /* Transition effect */
+  }
+  
+  .heart:before,
+  .heart:after {
+    content: "";
+    width: calc(50px * var(--sizeMultiplier)); /* Calculated size */
+    height: calc(80px * var(--sizeMultiplier)); /* Calculated size */
+    background-color: #ff4d4d;
+    border-radius: calc(50px * var(--sizeMultiplier)) calc(50px * var(--sizeMultiplier)) 0 0; /* Adjusted border radius */
+    position: absolute;
+    top: 0;
+    transition: opacity 1s ease-in-out; /* Transition effect */
+  }
+  
+  .heart:before {
+    left: calc(50px * var(--sizeMultiplier)); /* Adjusted position */
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  
+  .heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+  
+  .text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: calc(40px); /* Adjusted font size */
+    color: #ffffff; /* White text color */
+    font-family: Arial, sans-serif;
+    pointer-events: none; /* Ensure the text box does not intercept mouse events */
+    z-index: 1; /* Ensure the text box appears above the heart */
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .option {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1; /* Make the heart visible */
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1; /* Ensure the heart remains visible */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="heart">
+  <div class="text-box">Please come to meerut cutu :)</div>
+</div>
+
+<div class="options">
+    <div class="option" onclick="redirectToSpotifySong('https://open.spotify.com/track/1h4fyl5FY588wnb6nBc1dS?si=3fad02c616f04c7d')">Yes Yes</div>
+    <div class="option" onclick="redirectToSpotifySong('https://open.spotify.com/track/4BsLcWv5zyE69A1K5tY9CO?si=eaecef35fcf94dac')">Obv Yes Cutu</div>
+  </div>
+  
+  <script>
+  function redirectToSpotifySong(url) {
+    // Redirect to the specified Spotify song URL
+    window.location.href = url;
+  }
+  </script>
+  
+
+</body>
+</html>
